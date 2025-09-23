@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadena de Valor NexusLocated</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            line-height: 1.4;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        /* Actividades Primarias */
+        .primary-activities {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .primary-box {
+            flex: 1;
+            min-width: 200px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid #1976d2;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .primary-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3);
+        }
+        
+        .primary-box .icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .primary-box h3 {
+            color: #1565c0;
+            font-size: 14px;
+            margin: 10px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .primary-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            font-size: 11px;
+            color: #424242;
+        }
+        
+        .primary-box li {
+            margin: 5px 0;
+            padding: 3px 0;
+        }
+        
+        .kpi {
+            background: rgba(25, 118, 210, 0.1);
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #1565c0;
+            margin-top: 10px;
+        }
+        
+        /* Flechas entre actividades primarias */
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #1976d2;
+            margin: 0 5px;
+        }
+        
+        /* Actividades de Apoyo */
+        .support-activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .support-box {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border: 2px solid #7b1fa2;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .support-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(123, 31, 162, 0.3);
+        }
+        
+        .support-box .icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .support-box h3 {
+            color: #6a1b9a;
+            font-size: 14px;
+            margin: 10px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .support-box p {
+            font-size: 12px;
+            color: #424242;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        /* Segmentos de Valor */
+        .value-segments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .segment-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #f57c00;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(245, 124, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .segment-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 124, 0, 0.3);
+        }
+        
+        .segment-box .icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .segment-box h3 {
+            color: #ef6c00;
+            font-size: 14px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .segment-box p {
+            font-size: 12px;
+            color: #424242;
+            margin: 0;
+        }
+        
+        /* Ventaja Competitiva */
+        .competitive-advantage {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            border: 3px solid #2e7d32;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
+        }
+        
+        .competitive-advantage h2 {
+            color: #1b5e20;
+            font-size: 18px;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+        
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .advantage-item {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        /* Conectores visuales */
+        .connector {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+            color: #666;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #37474f 0%, #546e7a 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 30px 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .primary-activities {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            CADENA DE VALOR NEXUSLOCATED
+        </div>
+        
+        <div class="section-title">Actividades Primarias</div>
+        
+        <div class="primary-activities">
+            <div class="primary-box">
+                <span class="icon">🔄</span>
+                <h3>Logística de Entrada</h3>
+                <ul>
+                    <li>• Señales GPS/Satelitales</li>
+                    <li>• Datos IoT y Sensores</li>
+                    <li>• Conectividad 5G</li>
+                    <li>• Validación de Datos</li>
+                </ul>
+                <div class="kpi">KPI: >95% Precisión<br/>Latencia <2s</div>
+            </div>
+            
+            <div class="arrow">→</div>
+            
+            <div class="primary-box">
+                <span class="icon">⚙️</span>
+                <h3>Operaciones</h3>
+                <ul>
+                    <li>• Procesamiento ML/IA</li>
+                    <li>• Blockchain</li>
+                    <li>• Microservicios Cloud</li>
+                    <li>• Análisis Tiempo Real</li>
+                </ul>
+                <div class="kpi">KPI: <1s Procesamiento<br/>99.9% Uptime</div>
+            </div>
+            
+            <div class="arrow">→</div>
+            
+            <div class="primary-box">
+                <span class="icon">📤</span>
+                <h3>Logística de Salida</h3>
+                <ul>
+                    <li>• Apps Móviles</li>
+                    <li>• APIs Empresariales</li>
+                    <li>• Plataforma Web</li>
+                    <li>• Reportes Analíticos</li>
+                </ul>
+                <div class="kpi">KPI: 99.95% Disponibilidad<br/>APIs <500ms</div>
+            </div>
+            
+            <div class="arrow">→</div>
+            
+            <div class="primary-box">
+                <span class="icon">📈</span>
+                <h3>Marketing y Ventas</h3>
+                <ul>
+                    <li>• Campañas Segmentadas</li>
+                    <li>• Alianzas Estratégicas</li>
+                    <li>• Ventas Consultivas</li>
+                    <li>• Canales Distribución</li>
+                </ul>
+                <div class="kpi">KPI: >12% Conversión<br/>CAC <$150</div>
+            </div>
+            
+            <div class="arrow">→</div>
+            
+            <div class="primary-box">
+                <span class="icon">🛠️</span>
+                <h3>Servicios Postventa</h3>
+                <ul>
+                    <li>• Soporte 24/7</li>
+                    <li>• Actualizaciones</li>
+                    <li>• Capacitación</li>
+                    <li>• Gestión Incidentes</li>
+                </ul>
+                <div class="kpi">KPI: >95% Satisfacción<br/>Retención >90%</div>
+            </div>
+        </div>
+        
+        <div class="section-title">Actividades de Apoyo</div>
+        
+        <div class="support-activities">
+            <div class="support-box">
+                <span class="icon">🏢</span>
+                <h3>Infraestructura Empresarial</h3>
+                <p>Dirección ejecutiva (CEO, CTO, CMO, COO), planificación estratégica, gestión financiera, cumplimiento regulatorio (GDPR, CCPA) y gobernanza corporativa.</p>
+            </div>
+            
+            <div class="support-box">
+                <span class="icon">👥</span>
+                <h3>Gestión de Recursos Humanos</h3>
+                <p>Reclutamiento de talento especializado en geolocalización y ciberseguridad, programas de capacitación en tecnologías emergentes, cultura de innovación. Crecimiento: 20→80+ empleados.</p>
+            </div>
+            
+            <div class="support-box">
+                <span class="icon">🔬</span>
+                <h3>Desarrollo Tecnológico</h3>
+                <p>I+D (15% presupuesto), colaboraciones académicas, investigación en tecnologías emergentes (AR, edge computing), algoritmos propietarios y patentes.</p>
+            </div>
+            
+            <div class="support-box">
+                <span class="icon">🛒</span>
+                <h3>Adquisiciones</h3>
+                <p>Proveedores cloud (AWS, Azure), hardware especializado, servicios telecomunicaciones, licencias tecnológicas y diversificación de proveedores.</p>
+            </div>
+        </div>
+        
+        <div class="connector">⬇️</div>
+        
+        <div class="section-title">Creación de Valor por Segmento</div>
+        
+        <div class="value-segments">
+            <div class="segment-box">
+                <span class="icon">👤</span>
+                <h3>Usuarios Individuales</h3>
+                <p>Seguridad personal y familiar mediante localización precisa de personas y objetos con alertas inteligentes</p>
+            </div>
+            
+            <div class="segment-box">
+                <span class="icon">🚛</span>
+                <h3>Empresas Logísticas</h3>
+                <p>Optimización operativa con reducción de costos de combustible y mejora en eficiencia de flotas vehiculares</p>
+            </div>
+            
+            <div class="segment-box">
+                <span class="icon">👮</span>
+                <h3>Fuerzas de Seguridad</h3>
+                <p>Capacidades de monitoreo avanzado y coordinación de respuesta rápida ante situaciones de emergencia</p>
+            </div>
+            
+            <div class="segment-box">
+                <span class="icon">🏭</span>
+                <h3>Sector Industrial</h3>
+                <p>Protección de activos valiosos y prevención de pérdidas mediante rastreo especializado de maquinaria</p>
+            </div>
+        </div>
+        
+        <div class="connector">⬇️</div>
+        
+        <div class="competitive-advantage">
+            <h2>💎 VENTAJA COMPETITIVA SOSTENIBLE</h2>
+            <div class="advantages">
+                <div class="advantage-item">
+                    🎯 PRECISIÓN SUPERIOR<br/>
+                    <3m entornos urbanos
+                </div>
+                <div class="advantage-item">
+                    🔒 SEGURIDAD AVANZADA<br/>
+                    Encriptación + Blockchain
+                </div>
+                <div class="advantage-item">
+                    🌍 ESCALABILIDAD GLOBAL<br/>
+                    Cloud nativo + 5G
+                </div>
+                <div class="advantage-item">
+                    🚀 INNOVACIÓN CONTINUA<br/>
+                    15% inversión I+D
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
